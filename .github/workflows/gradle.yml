@@ -47,16 +47,16 @@ jobs:
 
     - name: taptap download
       run: |
-        ls
-        pwd
         mkdir download && cd download
         curl -o tap.py "https://raw.githubusercontent.com/7aGiven/TaptapDownload/main/tap.py"
-        ls
-        pwd
         python3 tap.py | grep -oP "'download': '\K[^']+" | xargs -I {} curl -o phigros.apk "{}"
-        ls
         
-
+    - name: Run and Generate
+      run: |
+        export PROJECT_PATH=$(pwd)
+        cd build/libs
+        java -jar PhigrosMetadata-1.0.jar "$PROJECT_PATH/download/phigros.apk"
+        
     - name: Upload build output
       uses: actions/upload-artifact@v4
       with:
