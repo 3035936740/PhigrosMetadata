@@ -72,7 +72,7 @@ public class Main {
 				offset++;
 			} while (xor != 0);
 		}
-		try (FileOutputStream outputStream = new FileOutputStream("metadata.dat")) {
+		try (FileOutputStream outputStream = new FileOutputStream("global-metadata.dat")) {
 			outputStream.write(metadata.array());
 		}
 	}
