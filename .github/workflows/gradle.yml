@@ -56,7 +56,7 @@ jobs:
         export PROJECT_PATH=$(pwd)
         cd build/libs
         export PHI_METADATA_JAR=$(ls | grep -E "^PhigrosMetadata-.*\.jar$")
-        java -jar $PHI_METADATA_JAR # "$PROJECT_PATH/download/phigros.apk"
+        java -jar $PHI_METADATA_JAR "$PROJECT_PATH/download/phigros.apk"
         
     - name: Upload build output
       uses: actions/upload-artifact@v4
