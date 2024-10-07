@@ -56,7 +56,9 @@ jobs:
         export PROJECT_PATH=$(pwd)
         ls | grep Phigros
         cd build/libs
+        ls
         export JAR=$(ls | grep -E "^PhigrosMetadata-.*\.jar$")
+        echo $JAR
         java -jar $JAR # "$PROJECT_PATH/download/phigros.apk"
         
     - name: Upload build output
