@@ -57,7 +57,7 @@ jobs:
         ls | grep Phigros
         cd build/libs
         export JAR=$(ls | grep -E "^PhigrosMetadata-.*\.jar$")
-        java -jar $JAR "$PROJECT_PATH/download/phigros.apk"
+        java -jar $JAR # "$PROJECT_PATH/download/phigros.apk"
         
     - name: Upload build output
       uses: actions/upload-artifact@v4
