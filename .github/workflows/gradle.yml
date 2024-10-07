@@ -54,12 +54,9 @@ jobs:
     - name: Run and Generate
       run: |
         export PROJECT_PATH=$(pwd)
-        ls | grep Phigros
         cd build/libs
-        ls
-        export JAR=$(ls | grep -E "^PhigrosMetadata-.*\.jar$")
-        echo $JAR
-        java -jar $JAR # "$PROJECT_PATH/download/phigros.apk"
+        export PHI_METADATA_JAR=$(ls | grep -E "^PhigrosMetadata-.*\.jar$")
+        java -jar $PHI_METADATA_JAR # "$PROJECT_PATH/download/phigros.apk"
         
     - name: Upload build output
       uses: actions/upload-artifact@v4
