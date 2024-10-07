@@ -45,11 +45,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install python3
 
-    - name: taptap download
-      run: |
-        mkdir download && cd download
-        curl -o tap.py "https://raw.githubusercontent.com/7aGiven/TaptapDownload/main/tap.py"
-        python3 tap.py | grep -oP "'download': '\K[^']+" | xargs -I {} curl -o phigros.apk "{}"
+    # - name: taptap download
+    #   run: |
+    #     mkdir download && cd download
+    #     curl -o tap.py "https://raw.githubusercontent.com/7aGiven/TaptapDownload/main/tap.py"
+    #     python3 tap.py | grep -oP "'download': '\K[^']+" | xargs -I {} curl -o phigros.apk "{}"
         
     - name: Run and Generate
       run: |
@@ -57,7 +57,8 @@ jobs:
         ls | grep Phigros
         cd build/libs
         export JAR=$(ls | grep .jar)
-        java -jar $JAR "$PROJECT_PATH/download/phigros.apk"
+        echo $JAR
+        java -jar "$JAR" "$PROJECT_PATH/download/phigros.apk"
         
     - name: Upload build output
       uses: actions/upload-artifact@v4
